@@ -219,6 +219,44 @@
     border-color: var(--primary);
 }
 
+.carousel-img-wrapper {
+    width: 100%;
+    height: 600px;        /* Set your desired consistent height */
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    /* Crops to fill without stretching */
+    object-position: center center; /* Crop from the center */
+    display: block;
+}
+
+/* Make the overlay stretch over the new wrapper */
+.owl-carousel-item .position-absolute {
+    z-index: 1;
+}
+
+
+.carousel-img-wrapper {
+    height: 300px; /* Mobile default */
+}
+
+@media (min-width: 768px) {
+    .carousel-img-wrapper {
+        height: 450px;
+    }
+}
+
+@media (min-width: 992px) {
+    .carousel-img-wrapper {
+        height: 600px;
+    }
+}
+
+
 .page-header {
     background: linear-gradient(rgba(6, 3, 21, .5), rgba(6, 3, 21, .5)), url(../img/carousel-1.jpg) center center no-repeat;
     background-size: cover;
@@ -355,7 +393,69 @@
         padding-left: calc(((100% - 1320px) / 2) + .75rem);
     }
 }
+input[type="email"], input[type="password"], input[type="text"], input[type="tel"] {
+  box-shadow: none;
+  height: 45px;
+  outline: none;
+  font-size: 14px;
+}
 
+input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus, input[type="tel"]:focus {
+  box-shadow: none;
+  border: 1px solid #007256;
+}
+
+.form-control,.wpcf7-form-control {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.form-control:focus, .wpcf7-form-control:focus {
+  box-shadow: none;
+  border: 1px solid #007256;
+}
+
+.wpcf7-form-control.wpcf7-submit {
+    color: #000;
+    background-color: #FF3E41;
+    border-color: #FF3E41;
+        padding: .375rem .75rem;
+}
+
+.wpcf7-form-control.wpcf7-submit:hover {
+    color: #fff;
+    background-color: #fc282b;
+    border-color: #FF3E41;
+    padding: .375rem .75rem;
+}
+
+.screen-reader-response, .wpcf7-not-valid-tip, .wpcf7-response-output {
+    text-align: left;
+    color: #FF3E41;
+}
+
+.form-control, .wpcf7-form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+label {
+  display: inline-block;
+  margin-bottom: .5rem;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 5px;
+}
 
 /*** Footer ***/
 .footer {
@@ -376,11 +476,11 @@
     transition: .3s;
 }
 
-.footer .btn.btn-social:hover {
+.footer .btn.btn-social:hover{
     color: var(--primary);
 }
 
-.footer .btn.btn-link {
+.footer .btn.btn-link, .footer-menu .menu-item a{
     display: block;
     margin-bottom: 5px;
     padding: 0;
@@ -392,7 +492,7 @@
     transition: .3s;
 }
 
-.footer .btn.btn-link::before {
+.footer .btn.btn-link::before, .footer-menu .menu-item a::before {
     position: relative;
     content: "\f105";
     font-family: "Font Awesome 5 Free";
@@ -400,7 +500,7 @@
     margin-right: 10px;
 }
 
-.footer .btn.btn-link:hover {
+.footer .btn.btn-link:hover, .footer-menu .menu-item a:hover {
     letter-spacing: 1px;
     box-shadow: none;
 }

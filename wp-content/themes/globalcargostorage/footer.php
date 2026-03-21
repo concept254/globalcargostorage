@@ -17,19 +17,20 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Services</h4>
-                    <a class="btn btn-link" href="">Air Freight</a>
-                    <a class="btn btn-link" href="">Sea Freight</a>
-                    <a class="btn btn-link" href="">Road Freight</a>
-                    <a class="btn btn-link" href="">Logistic Solutions</a>
-                    <a class="btn btn-link" href="">Industry solutions</a>
+					<?php wp_nav_menu( array('menu' => 'footer-column-1',
+                                     //'items_wrap' => '%3$s',
+                                     'menu_class'=> 'list-unstyled footer-menu',
+                                     'container'  => '',
+                                     'walker' => new nav_menu_dropdown())); ?>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Quick Links</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Support</a>
+
+					<?php wp_nav_menu( array('menu' => 'footer-column-2',
+                                     //'items_wrap' => '%3$s',
+                                     'menu_class'=> 'list-unstyled footer-menu',
+                                     'container'  => '',
+                                     'walker' => new nav_menu_dropdown())); ?>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Newsletter</h4>
@@ -45,12 +46,9 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                        Copyright Reserved to  © <?php echo date("Y"); ?> <span class="company">Concept254 Media</span> All rights reserved.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
-                        <!--/*** The author’s attribution link below must remain intact on your website. ***/-->
-                        <!--/*** If you wish to remove this credit link, please purchase the Pro Version from https://htmlcodex.com . ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
                     </div>
                 </div>
             </div>

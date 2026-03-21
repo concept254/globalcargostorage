@@ -43,26 +43,53 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
         <a href="index.html" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
-            <h2 class="mb-2 text-white">Logistica</h2>
+            <h2 class="mb-0 text-white d-flex align-items-center">
+                <i class="fa fa-globe fa-2x me-3 lh-1"></i>
+                <div class="d-flex flex-column">
+                    <span style="font-size: 1.1rem;">Global Cargo Storage</span>
+                    <span style="font-size: 0.75rem; opacity: 0.85; letter-spacing: 0.05em;">Portable & Self Storage Solutions</span>
+                </div>
+            </h2>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Services</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu fade-up m-0">
-                        <a href="feature.html" class="dropdown-item">Features</a>
-                        <a href="quote.html" class="dropdown-item">Free Quote</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <?php
+                    wp_nav_menu(array(
+                        'theme_location' => 'header-menu',
+                        'menu_class'     => 'navbar-nav ml-auto',
+                        'container'      => false,
+                        'walker'         => new Mega_Menu_Walker(),
+                    ));
+                ?>
             </div>
-            <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>+012 345 6789</h4>
+            <?php
+                    // Query the "website contacts" post
+                    $args = array(
+                        'post_type' => 'contact',
+                        'name'      => 'website-contacts', // The slug of the post
+                    );
+                    $contact_query = new WP_Query($args);
+
+                    // var_dump($contact_query);
+
+                    if ($contact_query->have_posts()) {
+                        while ($contact_query->have_posts()) {
+                            $contact_query->the_post();
+
+                            // Display custom fields
+                            $contact_phone = get_field('telephone_number');
+                            $contact_email = get_field('email_address');
+                            $contact_address = get_field('address');
+            ?>
+            <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i><?php echo esc_html($contact_phone); ?></h4>
+            <?php
+                        }
+                    }
+                    wp_reset_postdata();
+            ?>
         </div>
     </nav>
     <!-- Navbar End -->
