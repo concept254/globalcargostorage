@@ -1,0 +1,61 @@
+# === WordPress Core ===
+wp-admin/
+wp-includes/
+license.txt
+readme.html
+wp-config.php
+.htaccess
+
+# === Ignore WordPress content folders, except specific themes/plugins ===
+databases/
+logs/
+temp/
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+wp-content/backups/
+wp-content/backup-*/ 
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+wp-content/object-cache.php
+
+# === Ignore all plugins except your own ===
+wp-content/plugins/*
+!wp-content/plugins/your-plugin-name/
+
+# === Ignore all themes except your own ===
+wp-content/themes/*
+!wp-content/themes/your-theme-name/
+
+# === Composer dependencies ===
+/vendor/
+
+# === Node dependencies ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# === OS/System files ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === IDEs/Editor settings ===
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# === Env and config files ===
+.env
+.env.*
+wp-config-local.php
+local-config.php
+
+# === Logs ===
+*.log
+
+# === Build outputs ===
+/dist/
+/build/
