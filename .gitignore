@@ -25,7 +25,9 @@ wp-content/plugins/*
 
 # === Ignore all themes except your own ===
 wp-content/themes/*
+wp-content/themes/globalcargostorage/img/
 !wp-content/themes/globalcargostorage/
+
 
 # === Composer dependencies ===
 /vendor/
