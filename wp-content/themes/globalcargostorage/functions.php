@@ -21,7 +21,7 @@ function theme_scripts() {
     
     // wp_enqueue_script('jquery');
     // wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js');
-    // wp_enqueue_script('googlemap', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAGtUb_L6b2vxS8nCr8foE8M4w6EC2SH-I');
+    // wp_enqueue_script('googlemap', 'https://maps.googleapis.com/maps/api/js?key=SECRET-KEY');
     // wp_enqueue_script('slick', get_template_directory_uri() . '/js/slick.js');
     // wp_enqueue_script('main', get_template_directory_uri() . '/js/main-script.js');
 }
