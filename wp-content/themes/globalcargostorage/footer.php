@@ -4,16 +4,48 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
+                    <?php
+                            // Query the "page section" post
+                            $args = array(
+                                'post_type' => 'page-section',
+                                'name'      => 'footer-about', // The slug of the post
+                            );
+                            $page_section_query = new WP_Query($args);
+
+                            // var_dump($page_section_query);
+
+                            if ($page_section_query->have_posts()) {
+                                while ($page_section_query->have_posts()) {
+                                    $page_section_query->the_post();
+
+                                    // Display custom fields
+                                    $main_title = get_field('main_title');
+                                    $intro_text = get_field('intro_text');
+                                    $logo = get_field('logo');
+                                    $facebook = get_field('facebook');
+                                    $twitter = get_field('twitter');
+                                    $linkedin = get_field('linkedin');
+                                    $address = get_field('address');
+                                    $phone = get_field('phone');
+                                    $email = get_field('email');
+                                    
+                    ?>
                     <h4 class="text-light mb-4">Address</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i><?php echo esc_html($address); ?></p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i><?php echo esc_html($phone); ?></p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i><?php echo esc_html($email); ?></p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="<?php echo esc_html($twitter); ?>"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="<?php echo esc_html($facebook); ?>"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="<?php echo esc_html($linkedin); ?>"><i class="fab fa-linkedin-in"></i></a>
                     </div>
+                    <?php
+                        }
+                            wp_reset_postdata();
+                        } else {
+                            echo '<p>No content found.</p>';
+                        }
+                    ?>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Services</h4>
@@ -34,10 +66,9 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Newsletter</h4>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                    <p>Subscribe for our Newsletter</p>
                     <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                        <?php echo do_shortcode('[contact-form-7 id="d312aaa" title="Subscription Form"]'); ?>
                     </div>
                 </div>
             </div>

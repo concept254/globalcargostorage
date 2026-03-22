@@ -7,23 +7,17 @@
 		$feature_image = get_field('feature_image');
 	?>
 	<?php if ($feature_image) { ?>
-		<section class="page-title bg-1" style="background-image: url('<?php echo esc_html($feature_image['url']); ?>'); background-size: cover; position: relative; background-position: 50% -83.543px;">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-				<div class="col-md-12">
-					<div class="block text-center">
-					<span class="text-white">Home / <?php the_title(); ?></span>
-					<h1 class="text-capitalize mb-5 text-lg"><?php the_title(); ?></h1>
-
-					<!-- <ul class="list-inline breadcumb-nav">
-						<li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
-						<li class="list-inline-item"><span class="text-white">/</span></li>
-						<li class="list-inline-item"><a href="#" class="text-white-50">About Us</a></li>
-					</ul> -->
-					</div>
-				</div>
-				</div>
+		<!-- Page Header Start -->
+		<div class="container-fluid page-header py-5" style="margin-bottom: 6rem;" style="background-image: url('<?php echo esc_html($feature_image['url']); ?>'); background-size: cover; position: relative; background-position: 50% -83.543px;">
+			<div class="container py-5">
+				<h1 class="display-3 text-white mb-3 animated slideInDown">About Us</h1>
+				<nav aria-label="breadcrumb animated slideInDown">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+						<li class="breadcrumb-item"><a class="text-white" href="#"><?php the_title(); ?></a></li>
+					</ol>
+				</nav>
 			</div>
-		</section>
+		</div>
+		<!-- Page Header End -->
 	<?php } ?>

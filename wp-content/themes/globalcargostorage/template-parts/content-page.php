@@ -53,14 +53,13 @@
 	require get_template_directory() . '/includes/contact-details.php';
 	require get_template_directory() . '/includes/contact-form.php';
 }else{ ?>
-	<section class="section about-page py-5">
-		<div class="container">
-			<?php if($news_articles){ 
-				require get_template_directory() . '/includes/news-articles.php';
-			}else{ ?>
-			<div class="row">
-				<div class="col-lg-12">
-						<?php
+	<!-- About Start -->
+    <div class="container-fluid overflow-hidden px-lg-0">
+        <div class="container about px-lg-0">
+            <div class="row g-5 mx-lg-0">
+                <div class="col-lg-6 ps-lg-0 wow fadeInLeft" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <?php
 							if (has_post_thumbnail()) {
 								$thumbnail_id = get_post_thumbnail_id();
 								$thumbnail_url = wp_get_attachment_image_src($thumbnail_id, 'full', true);
@@ -71,54 +70,53 @@
 
 							}
 						?>
-				</div>
-			</div>
-				<?php if (!$no_content) { ?>
-					<div class="row">
-						<div class="col-lg-8">
-							<div class="department-content mt-5">
-								<h3 class="text-md"><?php the_title(); ?></h3>
-								<div class="divider my-4"></div>
-									
-									<!-- Show content -->
-									<?php the_content(); ?>
-										<div id="main">
-											<!-- condition forn accordion -->
-											<?php if ($faqs) { 
-												require get_template_directory() . '/includes/faqs.php';
-											} ?>
-										</div>
-								</div>
-							</div>
-						<div class="col-lg-4">
-							<div class="sidebar-widget schedule-widget mt-5">
-								<h5 class="mb-4">Time Schedule</h5>
-								<ul class="list-unstyled">
-								<li class="d-flex justify-content-between align-items-center">
-									<a href="#">Monday - Friday</a>
-									<span>9:00 - 17:00</span>
-								</li>
-								<li class="d-flex justify-content-between align-items-center">
-									<a href="#">Saturday</a>
-									<span>9:00 - 16:00</span>
-								</li>
-								<li class="d-flex justify-content-between align-items-center">
-									<a href="#">Sunday</a>
-									<span>Closed</span>
-								</li>
-								</ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 about-text wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="text-secondary text-uppercase mb-3"><?php the_title(); ?></h6>
+                    <h1 class="mb-2"><?php echo esc_html($sub_title); ?></h1>
+                    <?php the_content(); ?>
+                    <div class="row g-4 mb-2">
+						<?php
+							// Query the "Features" post
+							$args = array(
+								'post_type' => 'feature','posts_per_page' => 2,
+							);
+							$feature_query = new WP_Query($args);
 
-								<div class="sidebar-contatct-info mt-4">
-									<p class="mb-0">Need Urgent Help?</p>
-									<h3>+27 82 958 8473</h3>
-								</div>
-							</div>
-						</div>
-					</div>
-				<?php } ?>
-			<?php } ?>
-		</div>
-	</section>
+							// var_dump($feature_query);
+
+							if ($feature_query->have_posts()) {
+								while ($feature_query->have_posts()) {
+									$feature_query->the_post();
+
+									// Display custom fields
+									$sub_title = get_field('sub_title');
+									$header = get_field('header');
+									$icon = get_field('icon');
+									$link = get_field('link');
+									$link_text = get_field('link_text');
+									$description = get_field('description');
+						?>
+                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
+                            <i class="<?php echo esc_html($icon); ?> fa-3x text-primary mb-3"></i>
+                            <h5><?php echo esc_html($header); ?></h5>
+                            <p class="m-0"><?php echo esc_html($description); ?></p>
+                        </div>
+						<?php
+							}
+								wp_reset_postdata();
+							} else {
+								echo '<p>No content found.</p>';
+							}
+						?>
+                    </div>
+                    <a href="" class="btn btn-primary py-3 px-5">Explore More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
 <?php } ?>
 
 <?php if ($page_cta) { 
