@@ -17,13 +17,13 @@
             $contact_email = get_field('email_address');
             $contact_address = get_field('address');
 ?>
-    <section class="section contact-info pb-0">
+    <section class="section contact-info pb-4">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-sm-6 col-md-6">
                     <div class="contact-block mb-4 mb-lg-0">
                         <i class="icofont-live-support"></i>
-                        <h5>Call Us</h5>
+                        <h6 class="text-secondary text-uppercase">Call Us</h6>
                         <?php
                             if ($contact_email) {
                                 echo esc_html($contact_phone);
@@ -34,7 +34,7 @@
                 <div class="col-lg-4 col-sm-6 col-md-6">
                     <div class="contact-block mb-4 mb-lg-0">
                         <i class="icofont-support-faq"></i>
-                        <h5>Email Us</h5>
+                        <h6 class="text-secondary text-uppercase">Email Us</h6>
                         <?php
                             if ($contact_email) {
                                 echo esc_html($contact_email);
@@ -45,7 +45,7 @@
                 <div class="col-lg-4 col-sm-6 col-md-6">
                     <div class="contact-block mb-4 mb-lg-0">
                         <i class="icofont-location-pin"></i>
-                        <h5>Operating Hours</h5>
+                        <h6 class="text-secondary text-uppercase">Operating Hours</h6>
                         <b>Monday - Friday<b> 9:00 - 17:00
                         <?php
                             // if ($contact_address) {

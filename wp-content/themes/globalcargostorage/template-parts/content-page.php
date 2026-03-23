@@ -15,6 +15,7 @@
 	$faqs = get_field('faqs');
 	$howitworks = get_field('how_it_works');
 	$no_content = get_field('no_content');
+	$page_feature = get_field('page_feature');
 ?>
 
 <?php if ($intro_text) { ?>
@@ -122,10 +123,12 @@
 <?php if ($page_cta) { 
 	require get_template_directory() . '/includes/page-cta.php';
 } ?>
+<?php if ($page_feature) { 
+	require get_template_directory() . '/includes/page-feature.php';
+} ?>
 <?php if ($testimonials) { 
 	require get_template_directory() . '/includes/testimonials.php';
 } ?>
-<?php if ($partners) { 
-	// require get_template_directory() . '/includes/enroll-form.php';
+<?php if ($partners) {
 	require get_template_directory() . '/includes/partners.php';
 } ?>
